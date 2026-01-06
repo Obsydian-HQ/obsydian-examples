@@ -11,7 +11,7 @@ cc_library(
     srcs = glob(["app/**/*.cpp"]),
     copts = ["-std=c++20"],
     deps = [
-        "@obsidian//src:obsidian",
+        "@obsidian//:obsidian",
     ],
     alwayslink = 1,
 )
@@ -24,7 +24,7 @@ cc_library(
     copts = ["-std=c++20"],
     deps = [
         ":routes",
-        "@obsidian//src:obsidian",
+        "@obsidian//:obsidian",
     ],
 )
 
@@ -44,6 +44,6 @@ cc_binary(
     copts = ["-std=c++20"],
     deps = [
         ":routes",
-        "@obsidian//src:obsidian",
+        "@obsidian//:obsidian",
     ],
 )

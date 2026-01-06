@@ -13,7 +13,7 @@ cc_library(
     hdrs = [],
     copts = ["-std=c++20"],
     deps = [
-        "@obsidian//src:obsidian",  # Public API only - no internal dependencies
+        "@obsidian//:obsidian",  # Public API only - no internal dependencies
     ],
 )
 
@@ -32,6 +32,6 @@ cc_binary(
     srcs = ["main.cpp"],
     copts = ["-std=c++20"],
     deps = [
-        "@obsidian//src:obsidian",  # Public API only
+        "@obsidian//:obsidian",  # Public API only
     ],
 )
