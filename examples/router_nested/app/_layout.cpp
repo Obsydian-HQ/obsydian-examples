@@ -6,7 +6,7 @@
  */
 
 #include <obsidian/obsidian.h>
-#include <obsidian/route_registry_helper.h>
+#include <obsidian/navigation/route_registry_helper.h>
 
 using namespace obsidian;
 
