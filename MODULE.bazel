@@ -1,0 +1,48 @@
+# Obsidian Examples - Cross-platform native framework example applications
+# This module contains example applications demonstrating Obsidian features
+
+module(
+    name = "obsidian_examples",
+    version = "1.0.0",
+    compatibility_level = 1,
+)
+
+# ============================================================================
+# CORE DEPENDENCIES
+# ============================================================================
+
+# Bazel platform support
+bazel_dep(name = "platforms", version = "1.0.0")
+
+# Apple platform support (iOS, macOS, watchOS, tvOS)
+bazel_dep(name = "apple_support", version = "1.24.4")
+bazel_dep(name = "rules_apple", version = "4.3.3")
+bazel_dep(name = "rules_swift", version = "3.4.1")
+
+# C/C++ support
+bazel_dep(name = "rules_cc", version = "0.2.16")
+
+# ============================================================================
+# OBSIDIAN FRAMEWORK DEPENDENCY
+# ============================================================================
+
+# For development: Reference the local obsidian workspace
+# Uncomment the local_path_override to use local development version
+local_path_override(
+    module_name = "obsidian",
+    path = "../obsydian",
+)
+
+# The Obsidian framework module
+bazel_dep(name = "obsidian", version = "2.2.1")
+
+# ============================================================================
+# APPLE TOOLCHAIN SETUP
+# ============================================================================
+
+# Apple CC toolchain setup (required for objc_library targets)
+apple_cc_configure = use_extension("@apple_support//crosstool:setup.bzl", "apple_cc_configure_extension")
+use_repo(apple_cc_configure, "local_config_apple_cc")
+
+# Register the Apple CC toolchains
+register_toolchains("@local_config_apple_cc//:all")
